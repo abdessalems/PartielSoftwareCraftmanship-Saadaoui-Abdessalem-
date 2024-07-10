@@ -1,7 +1,5 @@
 package org.example;
 
-import java.util.List;
-
 public class Game {
     private Zone zone;
     private Survivor survivor;
@@ -17,7 +15,7 @@ public class Game {
                 return zombie;
             }
         }
-        return null; // Return null if no zombie found at the specified position
+        return null;
     }
 
     public Resource getResourcesAt(int x, int y) {
@@ -26,6 +24,15 @@ public class Game {
                 return resource;
             }
         }
-        return null; // Return null if no resource found at the specified position
+        return null;
+    }
+
+    public void handleEncounter(Zombie zombie) {
+        survivor.encounterWithZombie(zombie);
+    }
+
+    public void collectResource(Resource resource) {
+        survivor.addResourceToInventory(resource);
+        zone.removeResource(resource);
     }
 }

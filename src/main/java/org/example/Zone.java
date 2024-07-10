@@ -39,4 +39,8 @@ public class Zone {
     public List<Zombie> getZombies() {
         return zombies;
     }
+
+    public void removeResource(Resource resource) {
+        resources.remove(resource);
+    }
 }
