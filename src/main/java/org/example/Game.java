@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.List;
+
 public class Game {
     private Zone zone;
     private Survivor survivor;
