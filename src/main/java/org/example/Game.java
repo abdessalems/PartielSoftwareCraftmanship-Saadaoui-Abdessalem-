@@ -15,7 +15,7 @@ public class Game {
                 return zombie;
             }
         }
-        return null;
+        return null; // Return null if no zombie found at the specified position
     }
 
     public Resource getResourcesAt(int x, int y) {
@@ -24,7 +24,7 @@ public class Game {
                 return resource;
             }
         }
-        return null;
+        return null; // Return null if no resource found at the specified position
     }
 
     public void handleEncounter(Zombie zombie) {

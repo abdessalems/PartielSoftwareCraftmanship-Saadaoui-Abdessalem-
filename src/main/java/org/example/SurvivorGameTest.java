@@ -78,6 +78,7 @@ public class SurvivorGameTest {
         zone.addResource(resource);
         game.collectResource(resource);
         assertTrue(survivor.getInventory().contains(resource));
+        assertFalse(zone.getResources().contains(resource)); // Ensure the resource is removed from the zone
     }
 
     @Test
