@@ -11,27 +11,21 @@ public class Game {
         this.survivor = survivor;
     }
 
-    public void moveSurvivor(Direction direction) {
-        survivor.move(direction);
-        if (!zone.isWithinBounds(survivor.getX(), survivor.getY())) {
-            throw new RuntimeException("Survivor moved out of bounds and died!");
+    public Zombie getZombiesAt(int x, int y) {
+        for (Zombie zombie : zone.getZombies()) {
+            if (zombie.getX() == x && zombie.getY() == y) {
+                return zombie;
+            }
         }
-
-        Resource resource = zone.getResourceAt(survivor.getX(), survivor.getY());
-        if (resource != null) {
-            // Add resource to inventory (not shown in this simple example)
-            System.out.println("Found resource: " + resource.getType());
-        }
-
-        List<Zombie> zombies = zone.getZombiesAt(survivor.getX(), survivor.getY());
-        if (!zombies.isEmpty()) {
-            survivor.decreaseHealth(zombies.size() * 10); // Lose 10 health per zombie
-            System.out.println("Encountered " + zombies.size() + " zombies, health decreased!");
-        }
+        return null; // Return null if no zombie found at the specified position
     }
 
-    public boolean isSurvivorAlive() {
-        return survivor.getHealth() > 0;
+    public Resource getResourcesAt(int x, int y) {
+        for (Resource resource : zone.getResources()) {
+            if (resource.getX() == x && resource.getY() == y) {
+                return resource;
+            }
+        }
+        return null; // Return null if no resource found at the specified position
     }
 }
-

@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.Random;
+
 public class Zombie {
     private int x;
     private int y;
@@ -17,14 +19,23 @@ public class Zombie {
         return y;
     }
 
-    public void moveRandomly(Zone zone) {
-        int newX = x + (int)(Math.random() * 3) - 1;
-        int newY = y + (int)(Math.random() * 3) - 1;
-
-        if (zone.isWithinBounds(newX, newY)) {
-            x = newX;
-            y = newY;
+    public void move() {
+        Random random = new Random();
+        switch (random.nextInt(4)) {
+            case 0:
+                x++;
+                break;
+            case 1:
+                x--;
+                break;
+            case 2:
+                y++;
+                break;
+            case 3:
+                y--;
+                break;
         }
     }
 }
+
 

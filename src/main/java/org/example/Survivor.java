@@ -1,5 +1,4 @@
 package org.example;
-
 public class Survivor {
     private int x;
     private int y;
@@ -29,47 +28,36 @@ public class Survivor {
         return health;
     }
 
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
     public void move(Direction direction) {
         switch (direction) {
             case FORWARD:
-                moveForward();
+                switch (orientation) {
+                    case NORTH:
+                        y++;
+                        break;
+                    case SOUTH:
+                        y--;
+                        break;
+                    case EAST:
+                        x++;
+                        break;
+                    case WEST:
+                        x--;
+                        break;
+                }
                 break;
             case LEFT:
-                turnLeft();
+                orientation = orientation.turnLeft();
                 break;
             case RIGHT:
-                turnRight();
+                orientation = orientation.turnRight();
                 break;
         }
-    }
-
-    private void moveForward() {
-        switch (orientation) {
-            case NORTH:
-                y--;
-                break;
-            case SOUTH:
-                y++;
-                break;
-            case EAST:
-                x++;
-                break;
-            case WEST:
-                x--;
-                break;
-        }
-    }
-
-    private void turnLeft() {
-        orientation = orientation.turnLeft();
-    }
-
-    private void turnRight() {
-        orientation = orientation.turnRight();
-    }
-
-    public void decreaseHealth(int amount) {
-        health -= amount;
     }
 }
+
 
